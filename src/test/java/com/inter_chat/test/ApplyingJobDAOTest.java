@@ -25,7 +25,7 @@ public class ApplyingJobDAOTest
 		applyingJobDAO = (ApplyingJobDAO) context.getBean("applyingJobDAO");
 	}
 	
-	@Ignore
+//	@Ignore
 	@Test
 	public void postApplyingJobTest()
 	{
@@ -53,7 +53,7 @@ public class ApplyingJobDAOTest
 		assertTrue("Problem in updating applied job:", applyingJobDAO.updateApplyingJob(applyingJob));
 	}
 	
-//	@Ignore
+	@Ignore
 	@Test
 	public void listApplyingJobTest() 
 	{

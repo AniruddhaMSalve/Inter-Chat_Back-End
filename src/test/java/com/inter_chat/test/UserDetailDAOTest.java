@@ -61,11 +61,11 @@ static UserDetailDAO userDetailDAO;
 	@Test
 	public void deleteUserTest()
 	{
-		UserDetail userDetail=userDetailDAO.getUserDetail("test"); 
+		UserDetail userDetail=userDetailDAO.getUserDetail("x"); 
 		assertTrue("Problem in deleting user:", userDetailDAO.deleteUser(userDetail));
 	}
 	
-//	@Ignore
+	@Ignore
 	@Test
 	public void checkUserTest()
 	{
@@ -74,7 +74,7 @@ static UserDetailDAO userDetailDAO;
 	}
 	
 	
-//	@Ignore
+	@Ignore
 	@Test
 	public void listUserDetailTest() 
 	{

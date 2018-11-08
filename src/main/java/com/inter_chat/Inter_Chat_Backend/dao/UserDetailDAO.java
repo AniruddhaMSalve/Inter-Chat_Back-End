@@ -11,6 +11,6 @@ public interface UserDetailDAO
 	public boolean updateUser(UserDetail userDetail);
 	public boolean deleteUser(UserDetail userDetail);
 	public List<UserDetail> listUserDetail();
-	public UserDetail getUserDetail(String username);
-	public UserDetail checkUserValidation(String username,String password);
+	public UserDetail getUserDetail(String loginName);
+	public UserDetail checkUserValidation(String loginName,String password);
 }

@@ -2,15 +2,15 @@ package com.inter_chat.Inter_Chat_Backend.dao;
 
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.inter_chat.Inter_Chat_Backend.model.Blog;
 import com.inter_chat.Inter_Chat_Backend.model.Friend;
+import com.inter_chat.Inter_Chat_Backend.model.UserDetail;
 
 @Repository("friendDAO")
 @Transactional
@@ -18,65 +18,47 @@ public class FriendDAOImpl implements FriendDAO
 {
 	@Autowired
 	SessionFactory sessionFactory;
-	
+
 	@Override
-	public boolean addFriend(Friend friend) 
+	public boolean sendFriend(Friend friend) 
 	{
-		try
-		{
-			sessionFactory.getCurrentSession().save(friend);
-			return true;
-		}
-		catch(Exception e)
-		{
-			return false;
-		}
+		return false;
+	}
+
+	@Override
+	public boolean acceptFriend(Friend friend) 
+	{
+		return false;
 	}
 
 	@Override
 	public boolean deleteFriend(Friend friend) 
 	{
-		try
-		{
-			sessionFactory.getCurrentSession().delete(friend);
-			return true;
-		}
-		catch(Exception e)
-		{
-			return false;
-		}
+		return false;
 	}
 
 	@Override
-	public boolean updateFriend(Friend friend) 
-	{
-		try
-		{
-			sessionFactory.getCurrentSession().update(friend);
-			return true;
-		}
-		catch(Exception e)
-		{
-			return false;
-		}
-	}
-
-	@Override
-	public List<Friend> listFriend() 
+	public List<Friend> listFriend(String loginName) 
 	{
 		Session session=sessionFactory.openSession();
-		Query query = session.createQuery("from Friend");
-		List<Friend> listFriend = query.list();
+		Query query=session.createQuery("from friend where(loginName=:myloginName or friendloginName=:friendlogin) and status='A'");
+		query.setParameter("myloginName",loginName);
+		query.setParameter("friendlogin",loginName);
+		
+		List<Friend> listFriend=(List<Friend>)query.list();
 		session.close();
 		return listFriend;
 	}
 
 	@Override
-	public Friend getFriend(int friendId) 
+	public List<Friend> pendingFriend(String loginName) 
 	{
-		Session session=sessionFactory.openSession();
-		Friend friend=(Friend)session.get(Friend.class,friendId);
-		session.close();
-		return friend;
+		return null;
+	}
+
+	@Override
+	public List<UserDetail> suggestedFriend(String loginName) 
+	{
+		return null;
 	}
 }

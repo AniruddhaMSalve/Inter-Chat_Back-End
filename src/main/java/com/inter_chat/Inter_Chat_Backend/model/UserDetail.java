@@ -9,8 +9,8 @@ import javax.persistence.Table;
 public class UserDetail 
 {
 	@Id
-	String username;
 	String loginName;
+	String username;
 	String password;
 	String emailId;
 	String address;

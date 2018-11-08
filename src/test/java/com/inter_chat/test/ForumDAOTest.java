@@ -25,17 +25,16 @@ public class ForumDAOTest
 		forumDAO = (ForumDAO) context.getBean("forumDAO");
 	}
 	
-	@Ignore
+//	@Ignore
 	@Test
 	public void addForumTest()
 	{
 		Forum forum=new Forum();
 		forum.setCreateDate(new java.util.Date());
-		forum.setForumContent("test");
-		forum.setForumId(100);
-		forum.setForumName("test");
-		forum.setLoginName("test");
-		forum.setStatus("test");
+		forum.setForumContent("Forum");
+		forum.setForumName("Forum");
+		forum.setLoginName("Forum");
+		forum.setStatus("Forum");
 		assertTrue("Problem in adding forum:", forumDAO.addForum(forum));
 	}
 	

@@ -72,20 +72,20 @@ public class UserDetailDAOImpl implements UserDetailDAO
 	}
 
 	@Override
-	public UserDetail getUserDetail(String username) 
+	public UserDetail getUserDetail(String loginName) 
 	{
 		Session session=sessionFactory.openSession();
-		UserDetail userDetail=(UserDetail)session.get(UserDetail.class,username);
+		UserDetail userDetail=(UserDetail)session.get(UserDetail.class,loginName);
 		session.close();
 		return userDetail;
 	}
 
 	@Override
-	public UserDetail checkUserValidation(String username, String password) 
+	public UserDetail checkUserValidation(String loginName, String password) 
 	{
 		Session session=sessionFactory.openSession();
-		Query query = session.createQuery("from UserDetail where username=:myusername and password=:mypassword");
-		query.setParameter("myusername", username);
+		Query query = session.createQuery("from UserDetail where loginName=:myloginName and password=:mypassword");
+		query.setParameter("myloginName", loginName);
 		query.setParameter("mypassword", password);
 		List<UserDetail> listUserDetail = query.list();
 		if(listUserDetail.size()>0)
@@ -95,5 +95,4 @@ public class UserDetailDAOImpl implements UserDetailDAO
 		}
 		return null;
 	}
-
 }

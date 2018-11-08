@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table
 @SequenceGenerator(name="jobidseq",sequenceName="myjobseq")
@@ -23,7 +25,9 @@ public class Job
 	String designation;
 	String salary;
 	String status;
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd-mm-yyyy")
 	Date postedDate;
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd-mm-yyyy")
 	Date lastDate;
 	public int getJobId() {
 		return jobId;

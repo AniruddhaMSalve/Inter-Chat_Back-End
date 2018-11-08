@@ -25,7 +25,7 @@ public class ForumCommentDAOTest
 		forumCommentDAO = (ForumCommentDAO) context.getBean("forumCommentDAO");
 	}
 	
-	@Ignore
+//	@Ignore
 	@Test
 	public void addForumCommentTest()
 	{

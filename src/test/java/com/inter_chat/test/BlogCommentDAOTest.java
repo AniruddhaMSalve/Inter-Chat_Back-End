@@ -26,7 +26,7 @@ static BlogCommentDAO blogCommentDAO;
 		blogCommentDAO = (BlogCommentDAO) context.getBean("blogCommentDAO");
 	}
 	
-	@Ignore
+//	@Ignore
 	@Test
 	public void addBlogCommentTest()
 	{
@@ -47,7 +47,7 @@ static BlogCommentDAO blogCommentDAO;
 		assertTrue("Problem in deleting blog comment:", blogCommentDAO.deleteBlogComment(blogComment));
 	}
 	
-//	@Ignore
+	@Ignore
 	@Test
 	public void listBlogCommentTest() 
 	{

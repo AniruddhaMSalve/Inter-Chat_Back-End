@@ -24,7 +24,7 @@ public class BlogDAOImpl implements BlogDAO
 	{
 		try
 		{
-			sessionFactory.getCurrentSession().save(blog);
+			sessionFactory.getCurrentSession().saveOrUpdate(blog);
 			return true;
 		}
 		catch(Exception e)

@@ -26,7 +26,7 @@ static JobDAO jobDAO;
 		jobDAO = (JobDAO) context.getBean("jobDAO");
 	}
 	
-	@Ignore
+//	@Ignore
 	@Test
 	public void postJobTest()
 	{
@@ -67,7 +67,7 @@ static JobDAO jobDAO;
 	}
 	
 	
-//	@Ignore
+	@Ignore
 	@Test
 	public void listJobTest() 
 	{

@@ -21,6 +21,7 @@ import com.inter_chat.Inter_Chat_Backend.model.Forum;
 import com.inter_chat.Inter_Chat_Backend.model.ForumComment;
 import com.inter_chat.Inter_Chat_Backend.model.Friend;
 import com.inter_chat.Inter_Chat_Backend.model.Job;
+import com.inter_chat.Inter_Chat_Backend.model.ProfilePicture;
 import com.inter_chat.Inter_Chat_Backend.model.UserDetail;
 
 
@@ -29,6 +30,7 @@ import com.inter_chat.Inter_Chat_Backend.model.UserDetail;
 @EnableTransactionManagement
 public class DBConfig 
 {
+	@Bean(name="dataSource")
 	public DataSource getOracleDataSource() 
 	{
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -36,6 +38,7 @@ public class DBConfig
 		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521/XE");
 		dataSource.setUsername("INTERCHAT");
 		dataSource.setPassword("pass123");
+		System.out.println("Data Source Created");
 		return dataSource;
 	}
 	
@@ -44,7 +47,8 @@ public class DBConfig
 	public SessionFactory getSessionFactory() 
 	{
 		Properties hibernateProperties = new Properties();
-		hibernateProperties.put("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
+		
+		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 		
@@ -58,14 +62,17 @@ public class DBConfig
 		localsessionFactoryBuilder.addAnnotatedClass(Friend.class);
 		localsessionFactoryBuilder.addAnnotatedClass(Job.class);
 		localsessionFactoryBuilder.addAnnotatedClass(UserDetail.class);
+		localsessionFactoryBuilder.addAnnotatedClass(ProfilePicture.class);
 
 		SessionFactory sessionFactory = localsessionFactoryBuilder.buildSessionFactory();
+		System.out.println("Session Factory Created");
 		return sessionFactory;
 	}
 	
-	@Bean
+	@Bean(name="transactionManager")
 	public HibernateTransactionManager getHibernateTransactionManager(SessionFactory sessionFactory) 
 	{
+		System.out.println("Transaction Manager Created");
 		return new HibernateTransactionManager(sessionFactory);
 	}
 }
