@@ -6,11 +6,11 @@ import com.inter_chat.Inter_Chat_Backend.model.Friend;
 import com.inter_chat.Inter_Chat_Backend.model.UserDetail;
 
 public interface FriendDAO {
-	public boolean sendFriend(Friend friend);
+	public boolean sendFriendRequest(Friend friend);
 
-	public boolean acceptFriend(Friend friend);
+	public boolean acceptFriendRequest(int friendId);
 
-	public boolean deleteFriend(Friend friend);
+	public boolean deleteFriendRequest(int friendId);
 
 	public List<Friend> listFriend(String loginName);
 
