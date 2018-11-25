@@ -13,43 +13,33 @@ import com.inter_chat.Inter_Chat_Backend.model.ForumComment;
 
 @Repository("forumCommentDAO")
 @Transactional
-public class ForumCommentDAOImpl implements ForumCommentDAO 
-{
+public class ForumCommentDAOImpl implements ForumCommentDAO {
 	@Autowired
 	SessionFactory sessionFactory;
-	
+
 	@Override
-	public boolean addForumComment(ForumComment forumComment) 
-	{
-		try
-		{
+	public boolean addForumComment(ForumComment forumComment) {
+		try {
 			sessionFactory.getCurrentSession().save(forumComment);
 			return true;
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			return false;
 		}
 	}
 
 	@Override
-	public boolean deleteForumComment(ForumComment forumComment) 
-	{
-		try
-		{
+	public boolean deleteForumComment(ForumComment forumComment) {
+		try {
 			sessionFactory.getCurrentSession().delete(forumComment);
 			return true;
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			return false;
 		}
 	}
 
 	@Override
-	public List<ForumComment> listForumComment(int forumId) 
-	{
-		Session session=sessionFactory.openSession();
+	public List<ForumComment> listForumComment(int forumId) {
+		Session session = sessionFactory.openSession();
 		Query query = session.createQuery("from ForumComment");
 		List<ForumComment> listForumComment = query.list();
 		session.close();
@@ -57,10 +47,9 @@ public class ForumCommentDAOImpl implements ForumCommentDAO
 	}
 
 	@Override
-	public ForumComment getForumComment(int commentId) 
-	{
-		Session session=sessionFactory.openSession();
-		ForumComment forumComment=(ForumComment)session.get(ForumComment.class,commentId);
+	public ForumComment getForumComment(int commentId) {
+		Session session = sessionFactory.openSession();
+		ForumComment forumComment = (ForumComment) session.get(ForumComment.class, commentId);
 		session.close();
 		return forumComment;
 	}

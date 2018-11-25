@@ -1,7 +1,10 @@
 package com.inter_chat.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.BeforeClass;
@@ -10,72 +13,98 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.inter_chat.Inter_Chat_Backend.dao.JobDAO;
-import com.inter_chat.Inter_Chat_Backend.model.Blog;
+import com.inter_chat.Inter_Chat_Backend.model.ApplyJob;
 import com.inter_chat.Inter_Chat_Backend.model.Job;
 
-public class JobDAOTest 
-{
-static JobDAO jobDAO;
-	
+public class JobDAOTest {
+
+	private static JobDAO jobDAO;
+	private Job job;
+	private ApplyJob applyJob;
+
 	@BeforeClass
-	public static void initialize() 
-	{
+	public static void initialize() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan("com.inter_chat.Inter_Chat_Backend");
 		context.refresh();
 		jobDAO = (JobDAO) context.getBean("jobDAO");
 	}
-	
-//	@Ignore
-	@Test
-	public void postJobTest()
-	{
-		Job job=new Job();
-		job.setJobName("test");
-		job.setJobDesc("test");
-		job.setCompanyName("test");
-		job.setDesignation("test");
-		job.setSalary("100000000");
-		job.setStatus("test");
-		job.setPostedDate(new java.util.Date());
-		job.setLastDate(new java.util.Date());
-		assertTrue("Problem in posting job:",jobDAO.postJob(job));
-	}
-	
-	
+
 	@Ignore
 	@Test
-	public void updateJobTest()
-	{
-		Job job=jobDAO.getJob(951);
-		job.setJobName("test passed");
-		job.setJobDesc("test passed");
-		job.setCompanyName("test passed");
-		job.setDesignation("test passed");
-		job.setSalary("1111111111");
-		job.setStatus("passed");
-		assertTrue("Problem in updating job:",jobDAO.updateJob(job));
+	public void insertJobTest() throws ParseException {
+
+		job = new Job();
+		job.setJobDesignation("");
+		job.setCompany("");
+		job.setJobDescription("");
+		job.setLastDateToApply("");
+		job.setSalary(0);
+		job.setLocation("");
+		;
+		assertEquals("Successfully added job into the table", true, jobDAO.addJob(job));
+
+		System.out.println("Success");
 	}
-	
-	
+
 	@Ignore
 	@Test
-	public void deleteJobTest()
-	{
-		Job job=jobDAO.getJob(951);
-		assertTrue("Problem in deleting job:",jobDAO.deleteJob(job));
+	public void updateJobTest() throws ParseException {
+		job = jobDAO.getJob(24);
+		job.setJobDesignation("");
+		job.setCompany("");
+		job.setJobDescription("");
+		assertEquals("Successfully updated job into the table", true, jobDAO.updateJob(job));
+		System.out.println("Success");
 	}
-	
-	
+
 	@Ignore
 	@Test
-	public void listJobTest() 
-	{
-		List<Job> listJob = jobDAO.listJob();
-		assertTrue("Problem in listing job:",listJob.size()>0);
-		for (Job job : listJob) 
-		{
-			System.out.println(job.getJobName() + ": "+job.getCompanyName()+": "+job.getJobDesc()+": "+job.getDesignation()+": "+job.getSalary());
+	public void testGetJob() {
+		job = jobDAO.getJob(0);
+		assertEquals("Successfully fetched a job details from the table", "AssociateER", job.getJobDesignation());
+		System.out.println("Success");
+	}
+
+	@Ignore
+	@Test
+	public void testGetAllJob() {
+		assertTrue("Successfully fetched all jobs from the table", jobDAO.listAllJobs().size() > 0);
+		System.out.println("No of jobs:" + jobDAO.listAllJobs().size());
+		System.out.println("Success");
+	}
+
+	@Ignore
+	@Test
+	public void testDeleteJob() {
+		job = jobDAO.getJob(0);
+		assertEquals("Successfully deleted job details from the table", true, jobDAO.deleteJob(job));
+		System.out.println("Success");
+	}
+
+	@Ignore
+	@Test
+	public void testApplyJob() {
+		applyJob = new ApplyJob();
+		job = jobDAO.getJob(0);
+		applyJob.setAppliedDate(new Date());
+		applyJob.setLoginName("");
+		applyJob.setJobId(job.getJobId());
+		assertEquals("Successfully applied for job...", true, jobDAO.applyJob(applyJob));
+		System.out.println("Success");
+	}
+
+	@Ignore
+	@Test
+	public void listAllAppliedJobs() {
+		List<ApplyJob> listAppliedJobs = jobDAO.getAllAppliedJobDetails("");
+		assertTrue("Successfully fetched all applied jobs from the table", jobDAO.getAllAppliedJobDetails("User1").size() > 0);
+		for (ApplyJob appliedJobs : listAppliedJobs) {
+			System.out.println("ApplicationID :" + appliedJobs.getApplicationId());
+			System.out.println("JobID :" + appliedJobs.getJobId());
+			System.out.println("LoginName :" + appliedJobs.getLoginName());
+			System.out.println("Applied Date :" + appliedJobs.getAppliedDate());
 		}
+		System.out.println("Success");
 	}
 }

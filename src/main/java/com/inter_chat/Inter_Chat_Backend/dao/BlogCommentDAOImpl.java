@@ -14,55 +14,44 @@ import com.inter_chat.Inter_Chat_Backend.model.BlogComment;
 
 @Repository("blogCommentDAO")
 @Transactional
-public class BlogCommentDAOImpl implements BlogCommentDAO 
-{
-	
+public class BlogCommentDAOImpl implements BlogCommentDAO {
+
 	@Autowired
 	SessionFactory sessionFactory;
 
 	@Override
-	public boolean addBlogComment(BlogComment blogComment) 
-	{
-		try
-		{
+	public boolean addBlogComment(BlogComment blogComment) {
+		try {
 			sessionFactory.getCurrentSession().save(blogComment);
 			return true;
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			return false;
 		}
 	}
 
 	@Override
-	public boolean deleteBlogComment(BlogComment blogComment) 
-	{
-		try
-		{
+	public boolean deleteBlogComment(BlogComment blogComment) {
+		try {
 			sessionFactory.getCurrentSession().delete(blogComment);
 			return true;
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			return false;
 		}
 	}
 
 	@Override
-	public List<BlogComment> listBlogComment(int blogId) 
-	{
-		Session session=sessionFactory.openSession();
+	public List<BlogComment> listBlogComment(int blogId) {
+		Session session = sessionFactory.openSession();
 		Query query = session.createQuery("from BlogComment where blogId=:myBlogId");
-		query.setParameter("myBlogId",blogId);
+		query.setParameter("myBlogId", blogId);
 		List<BlogComment> listBlogComment = query.list();
 		return listBlogComment;
 	}
 
 	@Override
-	public BlogComment getBlogComment(int commentId) 
-	{
-		Session session=sessionFactory.openSession();
-		BlogComment blogComment=(BlogComment)session.get(BlogComment.class,commentId);
+	public BlogComment getBlogComment(int commentId) {
+		Session session = sessionFactory.openSession();
+		BlogComment blogComment = (BlogComment) session.get(BlogComment.class, commentId);
 		session.close();
 		return blogComment;
 	}

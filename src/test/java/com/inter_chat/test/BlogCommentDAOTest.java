@@ -13,49 +13,45 @@ import com.inter_chat.Inter_Chat_Backend.dao.BlogCommentDAO;
 import com.inter_chat.Inter_Chat_Backend.model.Blog;
 import com.inter_chat.Inter_Chat_Backend.model.BlogComment;
 
-public class BlogCommentDAOTest 
-{
-static BlogCommentDAO blogCommentDAO;
-	
+public class BlogCommentDAOTest {
+	static BlogCommentDAO blogCommentDAO;
+
 	@BeforeClass
-	public static void initialize() 
-	{
+	public static void initialize() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan("com.inter_chat.Inter_Chat_Backend");
 		context.refresh();
 		blogCommentDAO = (BlogCommentDAO) context.getBean("blogCommentDAO");
 	}
-	
-//	@Ignore
+
+	@Ignore
 	@Test
-	public void addBlogCommentTest()
-	{
-		BlogComment blogComment=new BlogComment();
-		blogComment.setCommentText("test");
-		blogComment.setBlogId(100);
-		blogComment.setCommentText("test");
+	public void addBlogCommentTest() {
+		BlogComment blogComment = new BlogComment();
+		blogComment.setCommentText("");
+		blogComment.setBlogId(0);
+		blogComment.setCommentText("");
 		blogComment.setCommentDate(new java.util.Date());
-		blogComment.setLoginName("test");
+		blogComment.setLoginName("");
 		assertTrue("Problem in adding blog comment:", blogCommentDAO.addBlogComment(blogComment));
 	}
-	
+
 	@Ignore
 	@Test
-	public void deleteBlogCommentTest()
-	{
-		BlogComment blogComment=blogCommentDAO.getBlogComment(952);
+	public void deleteBlogCommentTest() {
+		BlogComment blogComment = blogCommentDAO.getBlogComment(0);
 		assertTrue("Problem in deleting blog comment:", blogCommentDAO.deleteBlogComment(blogComment));
 	}
-	
+
 	@Ignore
 	@Test
-	public void listBlogCommentTest() 
-	{
-		List<BlogComment> listBlogComment = blogCommentDAO.listBlogComment(100);
-		assertTrue("Problem in listing blog:",listBlogComment.size()>0);
-		for (BlogComment blogComment : listBlogComment) 
-		{
-			System.out.println(blogComment.getBlogId() + ": "+blogComment.getCommentId()+": "+blogComment.getLoginName()+":"+blogComment.getCommentText()+":"+blogComment.getCommentDate());
+	public void listBlogCommentTest() {
+		List<BlogComment> listBlogComment = blogCommentDAO.listBlogComment(0);
+		assertTrue("Problem in listing blog:", listBlogComment.size() > 0);
+		for (BlogComment blogComment : listBlogComment) {
+			System.out.println(
+					blogComment.getBlogId() + ": " + blogComment.getCommentId() + ": " + blogComment.getLoginName()
+							+ ":" + blogComment.getCommentText() + ":" + blogComment.getCommentDate());
 		}
 	}
 }

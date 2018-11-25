@@ -14,22 +14,18 @@ public class ProfilePictureDAOImpl implements ProfilePictureDAO {
 
 	@Autowired
 	SessionFactory sessionFactory;
-	
+
 	@Override
-	public void save(ProfilePicture profilePicture) 
-	{
-		Session session=sessionFactory.getCurrentSession();				
+	public void save(ProfilePicture profilePicture) {
+		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(profilePicture);
 		session.flush();
-//		session.close();
 	}
 
 	@Override
-	public ProfilePicture getProfilePicture(String loginName) 
-	{
-		Session session=sessionFactory.openSession();
-		ProfilePicture profilePicture=(ProfilePicture)session.get(ProfilePicture.class,loginName);
+	public ProfilePicture getProfilePicture(String loginName) {
+		Session session = sessionFactory.openSession();
+		ProfilePicture profilePicture = (ProfilePicture) session.get(ProfilePicture.class, loginName);
 		return profilePicture;
 	}
-
 }
