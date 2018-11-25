@@ -2,7 +2,7 @@ package com.inter_chat.Inter_Chat_Backend.model;
 
 import java.util.Date;
 
-public class MessageOutput extends Message {
+public class OutputMessage extends Message {
 	private Date time;
 
 	public Date getTime() {
@@ -13,8 +13,9 @@ public class MessageOutput extends Message {
 		this.time = time;
 	}
 
-	public MessageOutput(Message original, Date time) {
+	public OutputMessage(Message original, Date time) {
 		super(original.getId(), original.getMessage());
 		this.time = time;
 	}
+
 }
