@@ -23,15 +23,14 @@ public class ForumCommentDAOTest {
 		forumCommentDAO = (ForumCommentDAO) context.getBean("forumCommentDAO");
 	}
 
-//	@Ignore
+	@Ignore
 	@Test
 	public void addForumCommentTest() {
 		ForumComment forumComment = new ForumComment();
-		forumComment.setCommentText("");
-		forumComment.setForumId(0);
-		forumComment.setCommentText("");
+		forumComment.setCommentText("Comment Text.");
+		forumComment.setForumId(1005);
 		forumComment.setCommentDate(new java.util.Date());
-		forumComment.setLoginName("");
+		forumComment.setLoginName("User02");
 		assertTrue("Problem in adding forum comment:", forumCommentDAO.addForumComment(forumComment));
 	}
 

@@ -28,11 +28,10 @@ public class BlogCommentDAOTest {
 	@Test
 	public void addBlogCommentTest() {
 		BlogComment blogComment = new BlogComment();
-		blogComment.setCommentText("");
-		blogComment.setBlogId(0);
-		blogComment.setCommentText("");
+		blogComment.setCommentText("Comment Text.");
+		blogComment.setBlogId(1029);
 		blogComment.setCommentDate(new java.util.Date());
-		blogComment.setLoginName("");
+		blogComment.setLoginName("User02");
 		assertTrue("Problem in adding blog comment:", blogCommentDAO.addBlogComment(blogComment));
 	}
 

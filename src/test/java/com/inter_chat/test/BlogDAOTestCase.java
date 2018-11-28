@@ -11,6 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.inter_chat.Inter_Chat_Backend.dao.BlogDAO;
 import com.inter_chat.Inter_Chat_Backend.model.Blog;
+import com.inter_chat.Inter_Chat_Backend.model.Blog;
 
 public class BlogDAOTestCase {
 	static BlogDAO blogDAO;
@@ -48,8 +49,9 @@ public class BlogDAOTestCase {
 	@Test
 	public void updateBlogTest() {
 		Blog blog = blogDAO.getBlog(0);
-		blog.setLikes(0);
-		blog.setDislikes(0);
+		blog.setBlogDesc("");
+		blog.setBlogName("");
+		blog.setLoginName("");
 		assertTrue("Problem in updating blog:", blogDAO.updateBlog(blog));
 	}
 
@@ -88,6 +90,16 @@ public class BlogDAOTestCase {
 		for (Blog blog : listBlog) {
 			System.out.println(blog.getBlogId() + ": " + blog.getBlogName() + ": " + blog.getBlogDesc() + ": "
 					+ blog.getLikes() + ": " + blog.getDislikes());
+		}
+	}
+	
+	@Ignore
+	@Test
+	public void listUserBlogTest() {
+		List<Blog> listBlog = blogDAO.listUserBlog("");
+		assertTrue("Problem in listing blog:", listBlog.size() > 0);
+		for (Blog blog : listBlog) {
+			System.out.println(blog.getBlogName() + ": " + blog.getBlogDesc());
 		}
 	}
 }

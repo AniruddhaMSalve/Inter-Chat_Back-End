@@ -42,8 +42,8 @@ public class UserDetailDAOTest {
 	@Test
 	public void updateUserTest() {
 		UserDetail userDetail = userDetailDAO.getUserDetail("");
-		userDetail.setLoginName("Admin");
-		userDetail.setRole("ROLE_ADMIN");
+		userDetail.setLoginName("");
+		userDetail.setRole("");
 		assertTrue("Problem in updating user:", userDetailDAO.updateUser(userDetail));
 	}
 

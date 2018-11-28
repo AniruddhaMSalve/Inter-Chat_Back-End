@@ -1,6 +1,5 @@
 package com.inter_chat.Inter_Chat_Backend.model;
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +10,6 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Component
 @Entity
 @Table
@@ -21,13 +18,25 @@ public class Job {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jobidseq")
-
+	@Column(nullable = false)
 	private int jobId;
+
+	@Column(nullable = false)
 	private String jobDesignation;
+	
+	@Column(nullable = false)
 	String company;
+	
+	@Column(nullable = false)
 	private int salary;
+	
+	@Column(nullable = false)
 	private String location;
+	
+	@Column(nullable = false)
 	private String jobDescription;
+	
+	@Column(nullable = false)
 	private String lastDateToApply;
 
 	public int getJobId() {

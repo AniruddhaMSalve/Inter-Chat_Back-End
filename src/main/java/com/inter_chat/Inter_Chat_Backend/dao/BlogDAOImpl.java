@@ -111,4 +111,15 @@ public class BlogDAOImpl implements BlogDAO {
 		session.close();
 		return blog;
 	}
+
+	@Override
+	public List<Blog> listUserBlog(String loginName) 
+	{
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from Blog where loginName=:myloginName and status='A'");
+		query.setParameter("myloginName", loginName);
+		List<Blog> listBlog = query.list();
+		session.close();
+		return listBlog;
+	}
 }

@@ -24,7 +24,6 @@ public class FriendDAOTest {
 		friendDAO = (FriendDAO) context.getBean("friendDAO");
 	}
 
-	// Working
 	@Ignore
 	@Test
 	public void ListFriendTest() {
@@ -39,7 +38,6 @@ public class FriendDAOTest {
 		}
 	}
 
-	// Working
 	@Ignore
 	@Test
 	public void PendingtFriendListTest() {
@@ -54,7 +52,6 @@ public class FriendDAOTest {
 		}
 	}
 
-	// Working
 	@Ignore
 	@Test
 	public void SendFriendRequestTest() {
@@ -64,25 +61,22 @@ public class FriendDAOTest {
 		assertTrue("Problem in sending friend request", friendDAO.sendFriendRequest(friend));
 	}
 
-	// Working
 	@Ignore
 	@Test
 	public void acceptFriendRequestTest() {
-		assertTrue("Problem in accepting request", friendDAO.acceptFriendRequest(0));
+		assertTrue("Problem in accepting request", friendDAO.acceptFriendRequest(997));
 	}
 
-	// Working
 	@Ignore
 	@Test
 	public void deleteFriendRequestTest() {
 		assertTrue("Problem in deleting request", friendDAO.deleteFriendRequest(0));
 	}
 
-	// Working
-	// @Ignore
+	@Ignore
 	@Test
 	public void ShowSuggestedFriendListTest() {
-		List<UserDetail> friendList = friendDAO.suggestedFriend("");
+		List<UserDetail> friendList = friendDAO.suggestedFriend("User4");
 		assertTrue("Problem in suggesting friends", friendList.size() > 0);
 
 		for (UserDetail friend : friendList) {

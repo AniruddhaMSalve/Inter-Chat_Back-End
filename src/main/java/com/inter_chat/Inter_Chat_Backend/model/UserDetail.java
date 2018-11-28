@@ -1,19 +1,36 @@
 package com.inter_chat.Inter_Chat_Backend.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table
 public class UserDetail {
 	@Id
+	@Column(nullable = false)
 	String loginName;
+	
+	@Column(nullable = false)
 	String username;
+	
+	@Column(nullable = false)
 	String password;
+	
+	@Column(nullable = false)
 	String emailId;
+	
+	@Column(nullable = false)
 	String address;
+	
+	@Column(nullable = false)
 	String mobileNo;
+	
+	@Column(nullable = false)
 	String role;
 
 	public String getUsername() {

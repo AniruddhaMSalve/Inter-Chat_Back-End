@@ -85,4 +85,16 @@ public class ForumDAOImpl implements ForumDAO {
 		session.close();
 		return forum;
 	}
+
+	@Override
+	public List<Forum> listUserForum(String loginName) 
+	{
+		Session session = sessionFactory.openSession();
+		Query query = session.createQuery("from Forum where loginName=:myloginName and status='A'");
+		query.setParameter("myloginName", loginName);
+		List<Forum> listForum = query.list();
+		session.close();
+		return listForum;
+	}
+
 }

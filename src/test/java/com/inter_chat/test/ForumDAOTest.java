@@ -46,8 +46,7 @@ public class ForumDAOTest {
 	@Test
 	public void updateForumTest() {
 		Forum forum = forumDAO.getForum(0);
-		forum.setForumName("");
-		forum.setForumContent("");
+		forum.setLoginName("");
 		assertTrue("Problem in updating forum:", forumDAO.updateForum(forum));
 	}
 
@@ -55,6 +54,16 @@ public class ForumDAOTest {
 	@Test
 	public void listForumTest() {
 		List<Forum> listForum = forumDAO.listForum();
+		assertTrue("Problem in listing forum:", listForum.size() > 0);
+		for (Forum forum : listForum) {
+			System.out.println(forum.getForumName() + ": " + forum.getForumContent());
+		}
+	}
+	
+	@Ignore
+	@Test
+	public void listUserForumTest() {
+		List<Forum> listForum = forumDAO.listUserForum("");
 		assertTrue("Problem in listing forum:", listForum.size() > 0);
 		for (Forum forum : listForum) {
 			System.out.println(forum.getForumName() + ": " + forum.getForumContent());

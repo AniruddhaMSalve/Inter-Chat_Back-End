@@ -1,5 +1,6 @@
 package com.inter_chat.Inter_Chat_Backend.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,9 +14,16 @@ import javax.persistence.Table;
 public class Friend {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "friendIdSeq")
+	@Column(nullable = false)
 	int friendId;
+
+	@Column(nullable = false)
 	String loginName;
+
+	@Column(nullable = false)
 	String friendLoginName;
+
+	@Column(nullable = false)
 	String status;
 
 	public int getFriendId() {
