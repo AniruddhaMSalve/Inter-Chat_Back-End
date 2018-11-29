@@ -21,7 +21,7 @@ public interface BlogDAO {
 	public boolean incrementDislikes(int blogId);
 
 	public List<Blog> listBlog();
-	
+
 	public List<Blog> listUserBlog(String loginName);
 
 	public Blog getBlog(int blogId);

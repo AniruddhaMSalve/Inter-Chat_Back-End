@@ -113,8 +113,7 @@ public class BlogDAOImpl implements BlogDAO {
 	}
 
 	@Override
-	public List<Blog> listUserBlog(String loginName) 
-	{
+	public List<Blog> listUserBlog(String loginName) {
 		Session session = sessionFactory.openSession();
 		Query query = session.createQuery("from Blog where loginName=:myloginName and status='A'");
 		query.setParameter("myloginName", loginName);

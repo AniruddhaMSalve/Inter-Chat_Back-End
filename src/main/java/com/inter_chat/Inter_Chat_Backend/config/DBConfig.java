@@ -13,7 +13,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import com.inter_chat.Inter_Chat_Backend.model.ApplyJob;
 import com.inter_chat.Inter_Chat_Backend.model.Blog;
 import com.inter_chat.Inter_Chat_Backend.model.BlogComment;

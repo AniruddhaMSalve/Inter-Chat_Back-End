@@ -14,22 +14,22 @@ public class UserDetail {
 	@Id
 	@Column(nullable = false)
 	String loginName;
-	
+
 	@Column(nullable = false)
 	String username;
-	
+
 	@Column(nullable = false)
 	String password;
-	
+
 	@Column(nullable = false)
 	String emailId;
-	
+
 	@Column(nullable = false)
 	String address;
-	
+
 	@Column(nullable = false)
 	String mobileNo;
-	
+
 	@Column(nullable = false)
 	String role;
 

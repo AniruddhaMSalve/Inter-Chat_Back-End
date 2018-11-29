@@ -23,19 +23,19 @@ public class Job {
 
 	@Column(nullable = false)
 	private String jobDesignation;
-	
+
 	@Column(nullable = false)
 	String company;
-	
+
 	@Column(nullable = false)
 	private int salary;
-	
+
 	@Column(nullable = false)
 	private String location;
-	
+
 	@Column(nullable = false)
 	private String jobDescription;
-	
+
 	@Column(nullable = false)
 	private String lastDateToApply;
 

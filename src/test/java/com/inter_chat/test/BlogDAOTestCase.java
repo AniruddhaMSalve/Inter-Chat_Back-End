@@ -28,11 +28,11 @@ public class BlogDAOTestCase {
 	@Test
 	public void addBlogTest() {
 		Blog blog = new Blog();
-		blog.setBlogName("");
-		blog.setBlogDesc("");
+		blog.setBlogName("Blog No 01");
+		blog.setBlogDesc("The content of blog 01.");
 		blog.setCreateDate(new java.util.Date());
-		blog.setLoginName("");
-		blog.setStatus("");
+		blog.setLoginName("User05");
+		blog.setStatus("A");
 		blog.setLikes(0);
 		blog.setDislikes(0);
 		assertTrue("Problem in adding blog:", blogDAO.addBlog(blog));
@@ -41,7 +41,7 @@ public class BlogDAOTestCase {
 	@Ignore
 	@Test
 	public void deleteBlogTest() {
-		Blog blog = blogDAO.getBlog(0);
+		Blog blog = blogDAO.getBlog(1052);
 		assertTrue("Problem in deleting blog:", blogDAO.deleteBlog(blog));
 	}
 
@@ -92,7 +92,7 @@ public class BlogDAOTestCase {
 					+ blog.getLikes() + ": " + blog.getDislikes());
 		}
 	}
-	
+
 	@Ignore
 	@Test
 	public void listUserBlogTest() {

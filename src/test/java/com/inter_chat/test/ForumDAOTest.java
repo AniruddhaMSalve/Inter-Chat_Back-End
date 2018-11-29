@@ -28,17 +28,17 @@ public class ForumDAOTest {
 	public void addForumTest() {
 		Forum forum = new Forum();
 		forum.setCreateDate(new java.util.Date());
-		forum.setForumContent("");
-		forum.setForumName("");
-		forum.setLoginName("");
-		forum.setStatus("");
+		forum.setForumContent("The content of forum 01.");
+		forum.setForumName("Forum No 01");
+		forum.setLoginName("User03");
+		forum.setStatus("NA");
 		assertTrue("Problem in adding forum:", forumDAO.addForum(forum));
 	}
 
 	@Ignore
 	@Test
 	public void deleteForumTest() {
-		Forum forum = forumDAO.getForum(0);
+		Forum forum = forumDAO.getForum(1018);
 		assertTrue("Problem in deleting forum:", forumDAO.deleteForum(forum));
 	}
 
@@ -59,7 +59,7 @@ public class ForumDAOTest {
 			System.out.println(forum.getForumName() + ": " + forum.getForumContent());
 		}
 	}
-	
+
 	@Ignore
 	@Test
 	public void listUserForumTest() {

@@ -20,21 +20,20 @@ public class Forum {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "forum")
 	@Column(nullable = false)
 	int forumId;
-	
+
 	@Column(nullable = false)
 	String forumName;
-	
+
 	@Column(nullable = false)
 	String forumContent;
-	
+
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-mm-yyyy")
 	@Column(nullable = false)
 	Date createDate;
-	
+
 	@Column(nullable = false)
 	String loginName;
-	
-	@Column(nullable = false)
+
 	String status;
 
 	public int getForumId() {

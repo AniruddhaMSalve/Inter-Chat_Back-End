@@ -90,7 +90,7 @@ public class JobDAOTest {
 		applyJob.setAppliedDate(new Date());
 		applyJob.setLoginName("User01");
 		applyJob.setJobId(job.getJobId());
-		
+
 		assertEquals("Successfully applied for job...", true, jobDAO.applyJob(applyJob));
 		System.out.println("Success");
 	}
@@ -99,7 +99,8 @@ public class JobDAOTest {
 	@Test
 	public void listAllAppliedJobs() {
 		List<ApplyJob> listAppliedJobs = jobDAO.getAllAppliedJobDetails("User01");
-		assertTrue("Successfully fetched all applied jobs from the table", jobDAO.getAllAppliedJobDetails("User01").size() > 0);
+		assertTrue("Successfully fetched all applied jobs from the table",
+				jobDAO.getAllAppliedJobDetails("User01").size() > 0);
 		for (ApplyJob appliedJobs : listAppliedJobs) {
 			System.out.println("ApplicationID :" + appliedJobs.getApplicationId());
 			System.out.println("JobID :" + appliedJobs.getJobId());

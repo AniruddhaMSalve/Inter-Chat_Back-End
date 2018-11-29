@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.inter_chat.Inter_Chat_Backend.model.Blog;
 import com.inter_chat.Inter_Chat_Backend.model.BlogComment;
 
 @Repository("blogCommentDAO")

@@ -20,16 +20,16 @@ public class BlogComment {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "blogcommentidseq")
 	@Column(nullable = false)
 	int commentId;
-	
+
 	@Column(nullable = false)
 	int blogId;
-	
+
 	@Column(nullable = false)
 	String commentText;
-	
+
 	@Column(nullable = false)
 	String loginName;
-	
+
 	@Column(nullable = false)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-mm-yyyy")
 	Date commentDate;
